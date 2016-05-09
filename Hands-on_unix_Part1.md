@@ -146,45 +146,45 @@ $ **mkdir** freetime
 
 These commands use so-called relative paths because garfield creates the directories where he is currently in, which is hopefully /home/garfield. Alternatively, garfield can use absolute paths.
 
-\$ **mkdir** /home/garfield/work
+$ **mkdir** /home/garfield/work
 
-\$ **mkdir** /home/garfield/freetime
+$ **mkdir** /home/garfield/freetime
 
 An absolute path describes the whole path starting from the root through all subdirectories.
 
 Since our workaholic garfield has no freetime we only create two further subdirectories underneath /home/garfield/work
 
-\$ **mkdir** work/sleep       	(does the same as the longer form **mkdir** ./work/sleep )
+$ **mkdir** work/sleep       	(does the same as the longer form **mkdir** ./work/sleep )
 
-\$ **mkdir** /home/garfield/work/food
+$ **mkdir** /home/garfield/work/food
 
 The former command uses a relative path whereas the latter command uses an absolute path. The command cd allows you to move through the directory tree.
 
-\$ **cd** work/ 		(does the same as the long form **cd** ./work/ )  
+$ **cd** work/ 		(does the same as the long form **cd** ./work/ )  
 
-\$ **pwd**
+$ **pwd**
 
-\$ **cd** /home/garfield/freetime
+$ **cd** /home/garfield/freetime
 
-\$ **pwd**
+$ **pwd**
 
-\$ **cd** ..
+$ **cd** ..
 
-\$ **pwd**
+$ **pwd**
 
 Whereas a single `.` specifies your current directory a double `..` specifies the parent directory. With these operations one can specify a very complicated command that does absolutely nothing.
 
-\$ **cd** ./work/./sleep/../sleep/../../
+$ **cd** ./work/./sleep/../sleep/../../
 
 Finally, there is the ls command that shows the directory content and the rmdir command that removes a directory.
 
-\$ **ls**
+$ **ls**
 
-\$ **ls** /home/garfield/work
+$ **ls** /home/garfield/work
 
-\$ **rmdir** /home/garfield/freetime
+$ **rmdir** /home/garfield/freetime
 
-\$ **ls** /home/garfield
+$ **ls** /home/garfield
 
  
 
@@ -396,19 +396,19 @@ awk is a simple programming language dedicated to text processing. Although you 
 
 Command | Description
 ---|------
-awk '{print \$1,\$2,\$4,\$5}' At.gff|awk splits a tab- or space-delimited file into variables. \$0 contains the full input line, \$1 column 1, \$2 column 2, and so on.|
-awk '{print \$4,\$2,\$3,\$1}' At.gff|So to switch column 1 and 4 we simply type.|
-awk '{sum=\$4+\$5;print sum,\$0}' At.gff|Print out sum of columns 4 and 5 before the line|
+awk '{print $1,$2,$4,$5}' At.gff|awk splits a tab- or space-delimited file into variables. $0 contains the full input line, $1 column 1, $2 column 2, and so on.|
+awk '{print $4,$2,$3,$1}' At.gff|So to switch column 1 and 4 we simply type.|
+awk '{sum=$4+$5;print sum,$0}' At.gff|Print out sum of columns 4 and 5 before the line|
 awk '{$2=$4+$5;print}' At.gff|Replace column 2 by the sum of columns 4 and 5|
-awk 'BEGIN {OFS="\\t"} {print \$4,\$2,\$3,\$1}' At.gff|We want to create tab-separated output (default is space-separated output)|
-awk 'BEGIN {FS=",";OFS="\\t"} {print \$4,\$2,\$3,\$1}' input.file|We have to change the input field separator as the input file indB.txt is comma-separated (“,”)|
-awk ‘$4\>1000 && \$5\<6000 {print \$0}’ At.gff|Shows all lines for positions between 100 and 200|
-awk '{SUM+=\$4} END {print SUM}' input.txt|Print out the sum of column 4 over the whole file|
-awk '{SUM+=\$4} END {print SUM/NR}' At.gff|Print out the mean of column 4|
+awk 'BEGIN {OFS="\t"} {print $4,$2,$3,$1}' At.gff|We want to create tab-separated output (default is space-separated output)|
+awk 'BEGIN {FS=",";OFS="\t"} {print $4,$2,$3,$1}' input.file|We have to change the input field separator as the input file indB.txt is comma-separated (`,`)|
+awk '$4>1000 && $5<6000 {print $0}’ At.gff|Shows all lines for positions between 100 and 200|
+awk '{SUM+=$4} END {print SUM}' input.txt|Print out the sum of column 4 over the whole file|
+awk '{SUM+=$4} END {print SUM/NR}' At.gff|Print out the mean of column 4|
 awk '/gene/ {c++} END {print c}' At.gff|Count lines containing “gene”| 
-awk '$4\>max {max=$4; maxline=$0} END {print maxline}' At.gff|Print the maximum value of column 4 observed in the file|
-awk 'BEGIN{while((getline\<"file1.txt")>0)lin[\$1]=\$0}\$1 in lin {print \$0"\\t"lin[\$1]}' file2.txt \> output.txt|join two files on column 1|
-awk 'BEGIN {FS="\\t"} {print NF}' At.gff | sort | uniq -c|Handy to check proper formatting – same number of columns over all lines.|
+awk '$4>max {max=$4; maxline=$0} END {print maxline}' At.gff|Print the maximum value of column 4 observed in the file|
+awk 'BEGIN{while((getline<"file1.txt")>0)lin[$1]=$0} $1 in lin {print $0"\t"lin[$1]}' file2.txt > output.txt|join two files on column 1|
+awk 'BEGIN {FS="\t"} {print NF}' At.gff | sort | uniq -c|Handy to check proper formatting – same number of columns over all lines.|
 
 ### Even more useful commands
 
@@ -560,8 +560,8 @@ With the `-w` parameter we count only lines where "gene" occurs as a separate wo
 
   **The same the safe way**
   Note that the previous `grep` searches were a bit risky, e.g. in exercise 2 we were assuming that "gene" never occurs as a word in any other column. From looking at the file it seems so but can we be sure?  
-The easiest solution is to only look for "gene" in column 3:
-```
+  The easiest solution is to only look for "gene" in column 3:
+  ```
 awk '$3=="gene" {print}' TAIR10_GFF3_genes.gff | wc -l
    28775
 ```
