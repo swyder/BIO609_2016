@@ -91,7 +91,7 @@ $ **less** tmp/poem.txt|less is a convenient command for displaying file content
 $ **grep** house tmp/poem.txt|if you are searching for something, you can use **grep** *text* to display only lines matching text|
 $ **wc** tmp/poem.txt|displays the number of lines in the file|
 $ **wc** -w tmp/poem.txt|counts the words in the file|
-$ **cp** tmp/p + TAB|if you start typing “cp tmp/d” and then press TAB, what happens?|
+$ **cp** tmp/p + `TAB`|if you start typing “cp tmp/d" and then press `TAB`, what happens?|
 $ **cd** \~/tmp|change current directory to directory tmp  | (On Mac OS X press alt+n for ~) 
 $ **cp** poem.txt poem2.txt|cp is used to copy the file data.tab to file data2.tab|
 $ **ls** -l|you should see 2 files now|
@@ -190,7 +190,7 @@ $ **ls** /home/garfield
 
 ### Using the terminal efficiently
 
-All the commands you have used recently are stored in the history and can be retrieved to minimize typing. TAB completion also avoids typing.
+All the commands you have used recently are stored in the history and can be retrieved to minimize typing. TAB completion also saves you some typing.
 
 Command | Description
 ---|------
@@ -198,13 +198,13 @@ $ **history**|shows all the commands you have used recently|
 arrow keys|Move in history, relaunch command by pressing Enter|
 $ **ctrl-r**|Search in history, eg. type "grep" to retrieve your last grep command.
 | To keep it in the command line, press the -> arrow key. To look for the second last etc press ctrl-R multiple times|
-**TAB completion**|completes program\_path/file\_name by pressing the TAB key
+**TAB completion**|completes program\_path/file\_name by pressing the `TAB` key
 
 If there are multiple options, they will be listed|
 
 - What were the options of your last grep command? wc command?
 
-- Explore the the files and subdirectories of the root directory: ls / + TAB
+- Explore the the files and subdirectories of the root directory: ls / + `TAB`
 
 - TAB completion also works with commands: list all commands starting with "g", "gr", "gre"
 
@@ -388,7 +388,7 @@ Command | Description
 ---|------
 uniq *file*|eliminate duplicate lines|
 cut –f 1 At.gff \| sort \| uniq -c |uniq –c counts the number of occurences of **sorted** lines. Here we extract values of column 1, sort them and count them|
-uniq -d|shows lines that are repeated in the output|
+uniq -d|shows lines that are repeated in the input (duplicates)|
 
 ### awk
 
@@ -479,7 +479,7 @@ Chr1	TAIR10	exon	111890	111961	.	-	.	Parent=AT1G01270.1
 AT1G01270 is a tRNA gene.
   
   
-4.  How many different chromosomes does the file contain?
+4.  How many different chromosomes does the file contain?  
   A first option using `grep`: 
 ```
 grep chromosome TAIR10_GFF3_genes.gff 
@@ -491,10 +491,11 @@ Chr5	TAIR10	chromosome	1	26975502	.	.	.	ID=Chr5;Name=Chr5
 ChrC	TAIR10	chromosome	1	154478	.	.	.	ID=ChrC;Name=ChrC
 ChrM	TAIR10	chromosome	1	366924	.	.	.	ID=ChrM;Name=ChrM
 ```
-Chr1-5 and the chloroplast and mitochondrial genomes
+  Chr1-5 and the chloroplast and mitochondrial genomes
+  
 
-Another option using `cut`:
-```
+  Another option using `cut`:
+  ```
 cut -f1 TAIR10_GFF3_genes.gff | sort -u
 Chr1
 Chr2
@@ -513,14 +514,14 @@ grep -c -w gene TAIR10_GFF3_genes.gff
 grep -c -w mRNA TAIR10_GFF3_genes.gff 
 35386
 ```
-Or we could also pipe the grep result into wc: `grep -w gene TAIR10_GFF3_genes.gff | wc -l`
-With the `-w` parameter we count only lines where "gene" occurs as a separate word. If we use grep without the `-w` parameter lines containing `protein_coding_gene` will also be counted. See further below for a safe solution using `awk`. 
+  Or we could also pipe the grep result into wc: `grep -w gene TAIR10_GFF3_genes.gff | wc -l`
+  With the `-w` parameter we count only lines where "gene" occurs as a separate word. If we use grep without the `-w` parameter lines containing `protein_coding_gene` will also be counted. See further below for a safe solution using `awk`. 
 
 
 6. How many miRNA genes are encoded in the genome?  
   Tip: Use multiple grep searches 
   ```
-grep "miRNA" TAIR10_GFF3_genes.gff | grep -w "gene" | wc -l
+  grep "miRNA" TAIR10_GFF3_genes.gff | grep -w "gene" | wc -l
      177
 ```
 
