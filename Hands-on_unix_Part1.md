@@ -140,9 +140,9 @@ The Linux file system is organized as a tree. The root of the tree is simply lab
 
 The command that shows the directory you are currently in is **pwd** (stands for print working directory). Let us assume garfield is in its home directory /home/garfield and wants to create two subdirectories work and freetime. The commands to achieve that are
 
-\$ **mkdir** work
+$ **mkdir** work
 
-\$ **mkdir** freetime
+$ **mkdir** freetime
 
 These commands use so-called relative paths because garfield creates the directories where he is currently in, which is hopefully /home/garfield. Alternatively, garfield can use absolute paths.
 
@@ -478,9 +478,10 @@ Chr1	TAIR10	tRNA	111890	111961	.	-	.	ID=AT1G01270.1;Parent=AT1G01270;Name=AT1G01
 Chr1	TAIR10	exon	111890	111961	.	-	.	Parent=AT1G01270.1
 ```
 AT1G01270 is a tRNA gene.
-
+  
+  
 4.  How many different chromosomes does the file contain?
-A first option using `grep`: 
+  A first option using `grep`: 
 ```
 grep chromosome TAIR10_GFF3_genes.gff 
 Chr1	TAIR10	chromosome	1	30427671	.	.	.	ID=Chr1;Name=Chr1
@@ -507,7 +508,7 @@ ChrM
 
 
 5.  How many genes, mRNAs?
-```
+  ```
 grep -c -w gene TAIR10_GFF3_genes.gff 
 28775
 grep -c -w mRNA TAIR10_GFF3_genes.gff 
@@ -519,20 +520,20 @@ With the `-w` parameter we count only lines where "gene" occurs as a separate wo
 
 6. How many miRNA genes are encoded in the genome?  
   Tip: Use multiple grep searches 
-```
+  ```
 grep "miRNA" TAIR10_GFF3_genes.gff | grep -w "gene" | wc -l
      177
 ```
 
 7. Which genes encodes an exon in Chromosome 1 at position 3535383-3538439 ?
-```
+  ```
 grep -w Chr1 TAIR10_GFF3_genes.gff | grep -w 3535383 | grep -w 3538439 | grep -w gene
 Chr1	TAIR10	gene	3535383	3538439	.	+	.	ID=AT1G10670;Note=protein_coding_gene;Name=AT1G10670
 ```
 
 8. (Advanced) Which types of RNAs are annotated? 
   Tip: use multiple cut and finally use ";" as separator
-```
+  ```
 grep -w gene TAIR10_GFF3_genes.gff | cut -f9 | cut -d";" -f2 | sort -u
 Note=miRNA
 Note=other_RNA
@@ -548,17 +549,17 @@ Note=tRNA
 
 
 1. How many genes are encoded in the Arabidopis genome?
-```
+  ```
 grep -c -w gene TAIR10_GFF3_genes.gff
    28775
-\#Or piping the results of grep into wc
+\# Or piping the results of grep into wc
 grep -w gene TAIR10_GFF3_genes.gff | wc -l
    28775
 ```
 With the `-w` parameter we count only lines where "gene" occurs as a separate word. If we use grep without the `-w` parameter lines containing `protein_coding_gene` will also be counted. See the next exercise for a safe solution. 
 
-1. How many genes are encoded in the Arabidopis genome? **The safe way**
-Note that the previous `grep` searches were a bit risky, e.g. in exercise 2 we were assuming that "gene" never occurs as a word in any other column. From looking at the file it seems so but can we be sure?  
+  **The same the safe way**
+  Note that the previous `grep` searches were a bit risky, e.g. in exercise 2 we were assuming that "gene" never occurs as a word in any other column. From looking at the file it seems so but can we be sure?  
 The easiest solution is to only look for "gene" in column 3:
 ```
 awk '$3=="gene" {print}' TAIR10_GFF3_genes.gff | wc -l
@@ -567,7 +568,7 @@ awk '$3=="gene" {print}' TAIR10_GFF3_genes.gff | wc -l
 
 
 2. How many genes are encoded by chromosome?
-```
+  ```
 grep -w gene TAIR10_GFF3_genes.gff | cut -f1 | sort | uniq -c 
 7509 Chr1
 4470 Chr2
@@ -581,7 +582,7 @@ We grep all the gene lines and extract the chromsome their are encoded on (the f
 
 
 3. Find the gene with the highest number of exons (79)
-```
+  ```
 grep -w exon TAIR10_GFF3_genes.gff | cut -f9 | sort | uniq -c | sort -k1,1nr | head
   79 Parent=AT3G48190.1
   75 Parent=AT1G67120.1
@@ -596,14 +597,14 @@ grep -w exon TAIR10_GFF3_genes.gff | cut -f9 | sort | uniq -c | sort -k1,1nr | h
 ```
 
 4. How many genes are not spliced?
-```
+  ```
 grep -w exon TAIR10_GFF3_genes.gff | cut -f9 | sort | uniq -c | awk '$1==1 {print }' | wc -l
    10740
 ```   
       
 5. Extract exons encoded on Chromosome 3 on positions 10000 – 30000  
   45 exons
-```
+  ```
 awk '$1=="Chr3" && $3=="exon" && $4>=10000 && $5<=30000 {print }' TAIR10_GFF3_genes.gff | head
 Chr3	TAIR10	exon	10106	10161	.	+	.	Parent=AT3G01040.1
 Chr3	TAIR10	exon	10265	10423	.	+	.	Parent=AT3G01040.1
@@ -615,7 +616,7 @@ Chr3	TAIR10	exon	10106	10161	.	+	.	Parent=AT3G01040.2
 ``` 
 
 6.  How many genes are encoded by the region?
-```
+  ```
 awk '$1=="Chr3" && $3=="gene" && $4>=10000 && $5<=30000 {print }' TAIR10_GFF3_genes.gff | wc -l
        4
 ``` 
@@ -623,7 +624,7 @@ awk '$1=="Chr3" && $3=="gene" && $4>=10000 && $5<=30000 {print }' TAIR10_GFF3_ge
 
 ## List of important commands
 
-a more complete list is available under 
+a more complete list is available [here](ImportantShellCommands.md)
 
 
 **File and folder manipulation, compression**
