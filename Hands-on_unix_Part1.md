@@ -481,7 +481,7 @@ AT1G01270 is a tRNA gene.
   
 4.  How many different chromosomes does the file contain?  
   A first option using `grep`: 
-```
+  ```
 grep chromosome TAIR10_GFF3_genes.gff 
 Chr1	TAIR10	chromosome	1	30427671	.	.	.	ID=Chr1;Name=Chr1
 Chr2	TAIR10	chromosome	1	19698289	.	.	.	ID=Chr2;Name=Chr2
