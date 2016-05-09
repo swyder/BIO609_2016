@@ -374,7 +374,7 @@ Use the complete genome annotation file `TAIR10_GFF3_genes.gff` for Arabidopsis 
 
 7.  Which genes encodes an exon in Chromosome 1 at position 3535383-3538439 ?
 
-8.  Which types of RNAs are annotated? (tip: use multiple cut and use "\\;" as separator)
+8.  Which types of RNAs are annotated? (tip: use multiple `cut` and use `;` as separator)
 
 
 
