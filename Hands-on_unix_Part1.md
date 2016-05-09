@@ -50,7 +50,7 @@ $ **cd** tmp | brings you to your newly created directory tmp
 $ **pwd** | you can see that your current working directory changed|
 $ **cd ..** | move one level up|
 $ **ls -l** | you should see the newly created tmp directory
-$ **nano tmp/poem.txt**|start editing file `tmp/poem.txt`|
+$ **nano tmp/poem.txt**|start editing file `tmp/poem.txt` (or creates a new file)|
 | copy/paste the poem by Robert Frost below to the `poem.txt` file in your nano editor
 
 
@@ -107,11 +107,27 @@ $ **rmdir** tmp|finally we remove the bio directory|
 Of course as long as we are working on single files we can also perform file/directory operations using the Linux or Mac OS graphical interface. But when we log in to a server we do not have a graphical user interface and we need to know how to move around using the shell.
 
 
-### Absolute vs relative paths(this exercise is from Stephen Turner)Let’s say you are here: /home/turnersd/scripts/. If you wanted to go to /home/turnersd/, you could type: `cd /home/turnersd/`. Or you could use a relative path: `cd ..` (two periods) will take you one directory “up” to the parent directory of the current directory.. (a single period) means the current directory  
-.. (two periods) means the parent directory  ~ means your home directory  **A few examples** 
+### Absolute vs relative paths
+
+(this exercise is from Stephen Turner)
+
+Let’s say you are here: /home/turnersd/scripts/. If you wanted to go to /home/turnersd/, you could type: `cd /home/turnersd/`. Or you could use a relative path: `cd ..` (two periods) will take you one directory “up” to the parent directory of the current directory.
+
+
+`.` (a single period) means the current directory  
+`..` (two periods) means the parent directory  
+`~` means your home directory  
+
+**A few examples** 
 
 Command | Description
----|------mv myfile .. | moves myfile to the parent directorycp myfile ../newname | copies myfile to the parent directory and names the copy newnamecp /home/turnersd/scripts/bstrap.pl . | copies bstrap.pl to “.” i.e. to dot, or the current directory you’re incp myfile ~/subdir/newname | copies myfile to subdir in your home, naming the copy newnamemore ../../../myfile | displays screen by screen the content of myfile, which exists 3 directories “up”
+---|------
+mv myfile .. | moves myfile to the parent directory
+cp myfile ../newname | copies myfile to the parent directory and names the copy newname
+cp /home/turnersd/scripts/bstrap.pl . | copies bstrap.pl to `.` i.e. to dot, or the current directory you’re in
+cp myfile ~/subdir/newname | copies myfile to subdir in your home, naming the copy newname
+more ../../../myfile | displays screen by screen the content of myfile, which exists 3 directories “up”
+
 
 ### (optional) Repetition of absolute and relative paths
 
@@ -119,7 +135,7 @@ Command | Description
 
 This exercise is to repeat absolute and relative paths, as experience shows that many beginners initially struggle with the directory structure. If you feel comfortable to move around you can skip it.
 
-The Linux file system is organized as a tree. The root of the tree is simply labeled as /. A first level subdirectory of / is, for instance, /home or /user. The home directory contains all user directories, such as /home/garfield or /home/snoopy.
+The Linux file system is organized as a tree. The root of the tree is simply labeled as `/`. A first level subdirectory of / is, for instance, /home or /user. The home directory contains all user directories, such as /home/garfield or /home/snoopy.
 
 
 The command that shows the directory you are currently in is **pwd** (stands for print working directory). Let us assume garfield is in its home directory /home/garfield and wants to create two subdirectories work and freetime. The commands to achieve that are
@@ -138,13 +154,13 @@ An absolute path describes the whole path starting from the root through all sub
 
 Since our workaholic garfield has no freetime we only create two further subdirectories underneath /home/garfield/work
 
-\$ **mkdir** ./work/sleep
+\$ **mkdir** work/sleep       	(does the same as the longer form **mkdir** ./work/sleep )
 
 \$ **mkdir** /home/garfield/work/food
 
-The former command uses a relative path whereas the later command uses an absolute path. Note that a simple . always specifies your current directory. The command cd allows you to move through the directory tree.
+The former command uses a relative path whereas the latter command uses an absolute path. The command cd allows you to move through the directory tree.
 
-\$ **cd** ./work/
+\$ **cd** work/ 		(does the same as the long form **cd** ./work/ )  
 
 \$ **pwd**
 
@@ -156,9 +172,9 @@ The former command uses a relative path whereas the later command uses an absolu
 
 \$ **pwd**
 
-Whereas a single . specifies your current directory a double .. specifies the parent directory. With these operations one can specify a very complicated command that does absolutely nothing.
+Whereas a single `.` specifies your current directory a double `..` specifies the parent directory. With these operations one can specify a very complicated command that does absolutely nothing.
 
-\$ **cd** ./work/./ sleep /../ sleep /../../
+\$ **cd** ./work/./sleep/../sleep/../../
 
 Finally, there is the ls command that shows the directory content and the rmdir command that removes a directory.
 
@@ -204,27 +220,27 @@ We use a genome annotation file for the model plant Arabidopsis thaliana – The
 1.  In the terminal: Create a new directory "Arabidopsis_annotation" in your home and move into the directory
 
 2. Download the file TAIR10_GFF3_genes to your harddisk:
-```
-wget ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_gff3/TAIR10_GFF3_genes.gff
-```
+   ```
+   wget ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_gff3/TAIR10_GFF3_genes.gff
+   ```
 
 3.  Extract the first 100 lines into a new file At.gff:
-```
-head -100 TAIR10_GFF3_genes.gff > At.gff
-```
+   ```
+   head -100 TAIR10_GFF3_genes.gff > At.gff
+   ```
 
 4.  Look at the file, the file is tab-separated with 9 columns/fields:
-```
-\<chromosome\> \<source\> \<feature\> \<start\> \<end\> \<score\> \<strand\> \<frame\> \<group\>
-```
-Non-available (unknown) values are denoted with a ".". You find a detailed format description under [http://genome.ucsc.edu/FAQ/FAQformat.html\#format3](http://genome.ucsc.edu/FAQ/FAQformat.html#format3)
+   ```
+   <chromosome> <source> <feature> <start> <end> <score> <strand> <frame> <group>
+   ```
+   Non-available (unknown) values are denoted with a `.`. You find a detailed format description under [http://genome.ucsc.edu/FAQ/FAQformat.html\#format3](http://genome.ucsc.edu/FAQ/FAQformat.html#format3)
 
 5.  Make a second file `indA.txt` using the nano editor by typing `nano indA.txt`:
-```
-mRNA
-three_prime_UTR
-```
-Quit the editor by `Control + x` and `Y`
+  ```
+  mRNA
+  three_prime_UTR
+  ```
+  Quit the editor by `Control + x` and `Y`
 
 
 
@@ -244,7 +260,7 @@ $ grep `-i` "CHR1" At.gff|Case-insensitive search|
 $ grep `--color` "protein" At.gff|Colors the search pattern in the result|
 $ grep `-c` "protein" At.gff|counts the number of lines containing "protein"|
 $ grep "3760\t5630" At.gff|Searching for 2 words separated by a tab "\t"
-(does not work on some Mac OS boxes, use piping instead and multiple greps)|
+(the last commonad does not work on some Mac OS boxes, use piping instead and multiple greps)|
 
 ### sort 
 
@@ -439,7 +455,7 @@ Use the complete genome annotation file `TAIR10_GFF3_genes.gff` for Arabidopsis 
 ## Solutions
 
 1.  Count the number of lines in the file
-```
+  ```
 wc -l TAIR10_GFF3_genes.gff
   590264 TAIR10_GFF3_genes.gff
 wc TAIR10_GFF3_genes.gff 
@@ -449,12 +465,12 @@ wc TAIR10_GFF3_genes.gff
   
 
 2. Sort the first 100 lines of the file alphabetically according to feature (CDS, exon, gene, three_prime_UTR, …).
-```
+  ```
 head -100 TAIR10_GFF3_genes.gff | sort -k3,3
 ```
 
 3. Extract all entries for gene `AT1G01270`. Is it a protein coding gene?
-```
+  ```
 grep AT1G01270 TAIR10_GFF3_genes.gff 
 \#or grep "AT1G01270" TAIR10_GFF3_genes.gff  
 Chr1	TAIR10	gene	111890	111961	.	-	.	ID=AT1G01270;Note=tRNA;Name=AT1G01270
