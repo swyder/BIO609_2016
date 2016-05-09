@@ -134,6 +134,32 @@ It is necessary because the directory where we stored `hello.pl` is not in the s
 Check the file's permissions using `ls -l`. Remove the permission to execute it and check the permissions again.
 
 
+## Exercise: Write a simple bash script
+
+Often you would like to run the same command with different parameters. As an exercise, write a short bash script that outputs numbers
+from 1 to 100. Use a **for** loop.
+
+```
+\#!/bin/bash
+for i in {1..100}
+do
+  echo $i
+done
+```
+
+Save the above code to a file (e.g. PrintNumbers.sh), make the file executable (+x flag) and run it.
+
+
+## Exercise: Iterating over files
+
+By using the same concept from the previous exercise (**for** loop), you can iterate over all files in a directory, print their name 
+and the length of each file.
+
+`for filename in *.fasta`
+  
+  
+1. Use **wc** to count the sequence length in each file. Make sure not to include the sequence header  
+2. Count the number of Methionines (M) in each sequence (use grep -o)  
 
 
 ## Appendix

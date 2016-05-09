@@ -19,7 +19,7 @@ heidi.lischer@ieu.uzh.ch
 &nbsp;   | &nbsp; | &nbsp;
 -------- | --- | --- 
 9.30 - 9.40 | **Welcome & Introduction** | SW&HTL
-9.40 - 12.30 | **Introduction to the command line** <br /> Working with files, working with text, pipes <br /> [Presentation](LinuxBash.pdf)  \| [Hands-on 1](Hands-on_unix_Part1.md) \| [Part2](Hands-on_unix_Part2.md) | SW
+9.40 - 12.30 | **Introduction to the command line** <br /> Working with files, working with text, pipes <br /> [Presentation](LinuxBash.pdf)  \| [Hands-on 1](Hands-on_unix_Part1.md) \| [Hands-on 2](Hands-on_unix_Part2.md) | SW
  | |
 13.30 - 17.30 | **Bash scripting** <br /> [Presentation](BashScripting.pdf) \| [Hands-on](Exercises_BashScripting.pdf) | HTL
 
