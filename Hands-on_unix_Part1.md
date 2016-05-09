@@ -407,8 +407,7 @@ awk '{SUM+=$4} END {print SUM}' input.txt|Print out the sum of column 4 over the
 awk '{SUM+=$4} END {print SUM/NR}' At.gff|Print out the mean of column 4|
 awk '/gene/ {c++} END {print c}' At.gff|Count lines containing “gene”| 
 awk '$4>max {max=$4; maxline=$0} END {print maxline}' At.gff|Print the maximum value of column 4 observed in the file|
-awk 'BEGIN{while((getline<"file1.txt")>0)lin[$1]=$0} $1 in lin {print $0"\t"lin[$1]}' file2.txt > output.txt|join two files on column 1|
-awk 'BEGIN {FS="\t"} {print NF}' At.gff | sort | uniq -c|Handy to check proper formatting – same number of columns over all lines.|
+awk 'BEGIN {FS="\t"} {print NF}' At.gff \| sort \| uniq -c|Handy to check proper formatting – same number of columns over all lines.|
 
 ### Even more useful commands
 
@@ -426,10 +425,10 @@ diff|Compare files line by line. See also diff3|
 
 Command | Description
 ---|------
-awk 'BEGIN{while((getline\<"file1.txt")\>0)lin[\$1]=\$0}\$1 in lin {print \$0"\\t"lin[\$1]}' file2.txt \> output.txt|join two files on column 1|
-awk 'BEGIN {OFS="\\t"} {print NF}' indA.txt | sort | uniq -c|Handy to check proper formatting of a tab-delimited file (e.g. before importing it into R) – same number of columns over all lines.|
+awk 'BEGIN {while((getline<"file1.txt")>0) lin[$1]=$0} $1 in lin {print $0"\t"lin[$1]}' file2.txt > output.txt|join two files on column 1|
+awk 'BEGIN {OFS="\t"} {print NF}' indA.txt | sort | uniq -c|Handy to check proper formatting of a tab-delimited file (e.g. before importing it into R) – same number of columns over all lines.|
 sort -k2.3n input.txt|sort starting from the 3rd character at column 2, as numbers|
-(echo hello; echo world; cat file1.txt) \> output.txt|Use brackets to redirect multiple files together|
+(echo hello; echo world; cat file1.txt) > output.txt|Use brackets to redirect multiple files together|
 
 
 ## (Advanced) Exercises
