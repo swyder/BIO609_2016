@@ -36,7 +36,7 @@ internet access, because you're going to get it off the web.
 You need to download some files to follow this lesson:  
 1. Open a terminal  
 2. Download bashScripting.zip (prepared by Heidi): `wget https://www.dropbox.com/s/4x34u51vn1za17f/bashScripting.zip`  
-3. Unzip the file doing `unzip bashScripting.zip`  
+3. Unzip the file doing: `unzip bashScripting.zip`  
 
 Let's check out the example data.
 
@@ -86,7 +86,7 @@ information too.
 
 Let's go into the data_script directory and see what is in there.
 ```
-    cd data_script
+cd data_script
 ls -F
 chr20.fa               ERR000061_500_2.fastq  ERR000064_200_2.fastq
 ERR000061_500_1.fastq  ERR000064_200_1.fastq
@@ -204,18 +204,18 @@ Type:
 
 Then enter the command:
 ```
-    ls dc_sample_data
+    ls bashScripting
 ```
 
-This will list the contents of the `dc_sample_data` directory without
+This will list the contents of the `bashScripting` directory without
 you having to navigate there.
 
 The `cd` command works in a similar way. Try entering:
 ```
     cd
-    cd dc_sample_data/untrimmed_fastq
+    cd bashScripting/data_script
 ```
-and you will jump directly to `untrimmed_fastq` without having to go through
+and you will jump directly to `data_script` without having to go through
 the intermediate directory.
 
 ### Exercise
@@ -230,16 +230,16 @@ lot of time. When you start typing out the name of a directory, then
 hit the tab key, the shell will try to fill in the rest of the
 directory name. For example, type `cd` to get back to your home directy, then enter:
 ```
-    cd dc_<tab>
+    cd ba<tab>
 ```
 The shell will fill in the rest of the directory name for
-`dc_sample_data`. Now go to dc_sample_data/untrimmed_fastq
+`bashScripting`. Now go to bashScripting/data_script
 ```
-    ls SR<tab><tab>
+    ls ER<tab><tab>
 ```
 When you hit the first tab, nothing happens. The reason is that there
 are multiple directories in the home directory which start with
-`SR`. Thus, the shell does not know which one to fill in. When you hit
+`ER`. Thus, the shell does not know which one to fill in. When you hit
 tab again, the shell will list the possible choices.
 
 Tab completion can also fill in the names of programs. For example,
@@ -266,22 +266,6 @@ are in a directory called `student`, which sits inside a directory called
 very top of the hierarchy is a directory called `/` which is usually
 referred to as the *root directory*. So, to summarize: `student` is a
 directory in `home` which is a directory in `/`.
-
-Now enter the following command:
-```
-    cd /home/student/dc_sample_data/.hidden
-```
-This jumps to `.hidden`. Now go back to the home directory (cd). We saw
-earlier that the command:
-```
-    cd dc_sample_data/.hidden
-```
-had the same effect - it took us to the `hidden` directory. But,
-instead of specifying the full path
-(`/home/student/dc_sample_data/data`), we specified a *relative path*. In
-other words, we specified the path relative to our current
-directory. A full path always starts with a `/`. A relative path does
-not.
 
 A relative path is like getting directions
 from someone on the street. They tell you to "go right at the Stop sign, and
@@ -313,11 +297,11 @@ How can you tell these are programs rather than plain files?
 
 There are some shortcuts which you should know about. Dealing with the
 home directory is very common. So, in the shell the tilde character,
-""~"", is a shortcut for your home directory. Navigate to the `dc_sample_data`
+`~`, is a shortcut for your home directory. Navigate to the `data_script`
 directory:
 ```
     cd
-    cd dc_sample_data
+    cd bashScripting/data_script
 ```
 Then enter the command:
 ```
@@ -329,7 +313,7 @@ above your current directory. Thus:
 ```
     ls ..
 ```
-prints the contents of the `/home/student/dc_sample_data`. You can chain
+prints the contents of the `/home/student/bashScripting`. You can chain
 these together, so:
 ```
     ls ../../
@@ -354,7 +338,7 @@ We want to be able to look at these files and do some things with them.
 
 ### Wild cards
 
-Navigate to the `~/dc_sample_data/data/untrimmed_fastq` directory. This
+Navigate to the `~/bashScripting/data_script` directory. This
 directory contains our FASTQ files.
 
 The `*` character is a shortcut for "everything". Thus, if
@@ -369,18 +353,18 @@ This lists every file that ends with a `fastq`. This command:
 ```
 Lists every file in `/usr/bin` that ends in the characters `.sh`.
 ```
-    ls *977.fastq
+    ls *_1.fastq
 ```
-lists only the file that ends with '977.fastq'
+lists only the file that ends with '_1.fastq'
 
 So how does this actually work? Well...when the shell (bash) sees a
 word that contains the `*` character, it automatically looks for filenames
 that match the given pattern. 
 
-We can use the command 'echo' to see wilcards are they are intepreted by the shell.
+We can use the command 'echo' to see wildcards are they are intepreted by the shell.
 ```
    echo *.fastq
-   SRR097977.fastq SRR098026.fastq
+   ERR000061_500_1.fastq ERR000061_500_2.fastq ERR000064_200_1.fastq ERR000064_200_2.fastq
 ```
 The '*' is expanded to include any file that ends with '.fastq'
 
@@ -396,7 +380,6 @@ navigating to a different directory.
 
 BONUS: List all of the files in '/bin' that contain the letter 'a' or 'c'
 
-****
 
 
 ## Command History
@@ -422,7 +405,7 @@ If your history looked like this:
 ```
     259  ls *
     260  ls /usr/bin/*.sh
-    261  ls *R1*fastq
+    261  ls *_1*fastq
 ```
 then you could repeat command #260 by simply entering:
 ```
@@ -437,7 +420,6 @@ files in /bin) and reissue that command.
 
 
 
-
 ## Examining Files
 
 We now know how to switch directories, run programs, and look at the
@@ -446,29 +428,30 @@ contents of directories, but how do we look at the contents of files?
 The easiest way to examine a file is to just print out all of the
 contents using the program `cat`. Enter the following command:
 ```
-    cat SRR098026.fastq
+    cat ERR000064_200_1.fastq
 ```
-This prints out the all the contents of the the `SRR098026.fastq` to the screen.
+This prints out the all the contents of the the `ERR000064_200_1.fastq` to the screen.
+
 
 ### Exercises
 
-1.  Print out the contents of the `~/dc_sample_data/untrimmed_fastq/SRR097977.fastq`
+1.  Print out the contents of the `~/bashScripting/data_script/chr20.fa`
     file. What does this file contain?
 
 2.  From your home directory, without changing directories,
     use one short command to print the contents of all of the files in
-    the `/home/student/dc_sample_data/untrimmed_fastq` directory.
+    the `/home/student/bashScripting/data_script` directory.
 
 
 ```
-    cd ~/dc_sample_data/untrimmed_fastq
+    cd ~/bashScripting/data_script
 ```
 
 `cat` is a terrific program, but when the file is really big, it can
 be annoying to use. The program, `less`, is useful for this
 case. Enter the following command:
 ```
-    less SRR098026.fastq
+    less ERR000064_200_1.fastq
 ```
 `less` opens the file, and lets you navigate through it. The commands
 are identical to the `man` program.
@@ -493,7 +476,7 @@ works its way forward. If you are at the end of the file and search
 for the word "cat", `less` will not find it. You need to go to the
 beginning of the file and search.
 
-For instance, let's search for the sequence `GTGCGGGCAATTAACAGGGGTTCAC` in our file.
+For instance, let's search for the sequence `GATAAAATATTTGCAAAGTATCTATC` in our file.
 You can see that we go right to that sequence and can see
 what it looks like.
 
@@ -508,25 +491,31 @@ to see the beginning or end of the file, or see how it's formatted.
 The commands are `head` and `tail` and they just let you look at
 the beginning and end of a file respectively.
 ```
-head SRR098026.fastq
-tail SRR098026.fastq
+head 
+tail ERR000064_200_1.fastq
 ```
 The `-n` option to either of these commands can be used to print the
 first or last `n` lines of a file. To print the first/last line of the
 file use:
 ```
-head -n 1 SRR098026.fastq
-tail -n 1 SRR098026.fastq
+head -n 1 ERR000064_200_1.fastq
+tail -n 1 ERR000064_200_1.fastq
 ```
+there is also a short form
+```
+head -1 ERR000064_200_1.fastq
+tail -1 ERR000064_200_1.fastq
+```
+
 
 ## Creating, moving, copying, and removing
 
 Now we can move around in the file structure, look at files, search files,
 redirect. But what if we want to do normal things like copy files or move
 them around or get rid of them. Sure we could do most of these things
-without the command line, but what fun would that be?! Besides it's often
+without the command line, but it's often
 faster to do it at the command line, or you'll be on a remote server
-like Amazon where you won't have another option.
+where you won't have another option.
 
 
 Our raw data in this case is fastq files.  We don't want to change the original files,
@@ -535,11 +524,10 @@ so let's make a copy to work with.
 Lets copy the file using the `cp` command. The `cp`
 command backs up the file. Navigate to the `data` directory and enter:
 ```
-    cp SRR098026.fastq SRR098026-copy.fastq
+    cp ERR000064_200_1.fastq ERR000064_200_1-copy.fastq
     ls -F
-    SRR097977.fastq  SRR098026-copy.fastq  SRR098026.fastq 
 ```
-Now SRR098026-copy.fastq has been created as a copy of SRR098026.fastq
+Now ERR000064_200_1-copy.fastq has been created as a copy of ERR000064_200_1.fastq
 
 Let's make a `backup` directory where we can put this file.
 
@@ -553,22 +541,22 @@ move files around using the command `mv`. Enter this command:
 ```
     mv *-copy.fastq backup
     ls -al backup
-    total 52
-    drwxrwxr-x 2 dcuser dcuser  4096 Jul 30 15:31 .
-    drwxr-xr-x 3 dcuser dcuser  4096 Jul 30 15:31 ..
-    -rw-r--r-- 1 dcuser dcuser 43421 Jul 30 15:28 SRR098026-copy.fastq
+    total 121576
+    drwxr-xr-x  3 swyder  staff       102  9 Mai 14:54 .
+    drwxr-xr-x  8 swyder  staff       272  9 Mai 14:53 ..
+    -rw-r--r--  1 swyder  staff  62243181  9 Mai 14:54 ERR000064_200_1-copy.fastq    
 ```
 The `mv` command is also how you rename files. Since this file is so
 important, let's rename it:
 ```
     cd backup
-    mv SRR098026-copy.fastq SRR098026-copy.fastq_DO_NOT_TOUCH!
+    mv ERR000064_200_1-copy.fastq ERR000064_200_1-copy.fastq_DO_NOT_TOUCH!
     ls 
-    SRR098026-copy.fastq_DO_NOT_TOUCH!
+    ERR000064_200_1-copy.fastq_DO_NOT_TOUCH!
 ```
     Finally, we decided this was silly and want to start over.
 ```
-    rm backup/SRR*
+    rm backup/ERR*
 ```
 The `rm` file permanently removes the file. Be careful with this command. It doesn't
 just nicely put the files in the Trash. They're really gone.
