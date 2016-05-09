@@ -52,13 +52,14 @@ Now you can start the VM by selecting it in the list and clicking on the Start b
 ## Recommended websites
 
 **General**  
-- <http://software-carpentry.org/lessons>  
+- <http://software-carpentry.org/lessons> and <http://www.datacarpentry.org/lessons>
   Scientific Computing Resources for learning bash shell, programming in python, R, …]  
 - [BioStars](https://www.biostars.org/) for questions about biocomputing and scripting for biologists  
 - [stackoverflow](http://stackoverflow.com/) for questions related to coding
 
 **Linux/Shell**  
 - Software Carpentry tutorial - [The Unix shell](http://swcarpentry.github.io/shell-novice)   
+- Data-Carpentry - [shell-genomics](http://github.com/datacarpentry/shell-genomics/tree/gh-pages/lessons) 
 - [SIB e-learning: UNIX fundamentals](http://edu.isb-sib.ch/pluginfile.php/2878/mod_resource/content/3/couselab-html/content.html)  
 - [Explain shell commands](http://explainshell.com/)   
 - [Tips & Tricks for using the shell on Mac OS](http://furbo.org/2014/09/03/the-terminal/)  
