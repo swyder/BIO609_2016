@@ -15,11 +15,13 @@ Many thanks to Gregor Roth (von Mering group / IMLS, UZH) who agreed to share so
  
 ## Compressing/Decompressing files
 
-### File compression and decompression**
+### File compression and decompression
 
 There are 2 different frequently used methods to compress files, in order to save space: `gzip` and `zip`. The `.gz` gzip format is the 
 most frequently used format in the Linux world. Gzip is used in combination with `tar` to archive all the files into a single
 tarball before compression (format `.tar.gz`).     
+  
+Zip and unzip are compatible with Windows and Mac OS compression software.
   
 
 **Command** | **Meaning** |
