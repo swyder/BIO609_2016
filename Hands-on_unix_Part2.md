@@ -60,7 +60,13 @@ It also checks automatically for software updates and your system will propose y
 
 The drawback is that the repositories are lagging a bit behind and they often do not install the latest versions. This is not a problem for most applications but it can be problematic in the fast-moving genomics field.
 
-You can interact with the package manager using a graphical user interface or the command line. There is a sort of App Store called "Ubuntu Software Center" which includes software reviews. To run it, click on topmost icon in the dock on the left and type "Ubuntu Software Center" in the search field. Try it.
+You can interact with the package manager using a graphical user interface or the command line. There is a sort of App Store called "Ubuntu Software Center" which includes software reviews. To run it, click on topmost icon in the dock on the left and type "Ubuntu Software Center" in the search field.
+
+### Exercise
+
+The "Ubuntu Software Center" comprises many software frequently used in bioinformatics/genomics.   
+1. Open the "Ubuntu Software Center" and look for "muscle". Click on "More Info" to learn more about it.  
+2. Try to find out what "emboss" is using the "Ubuntu Software Center"  
 
 
 ### Compile from source

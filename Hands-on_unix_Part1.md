@@ -259,8 +259,6 @@ $ grep `–w` "Chr1" At.gff|Only whole words, would e.g. exclude Chr10|
 $ grep `-i` "CHR1" At.gff|Case-insensitive search|
 $ grep `--color` "protein" At.gff|Colors the search pattern in the result|
 $ grep `-c` "protein" At.gff|counts the number of lines containing "protein"|
-$ grep "3760\t5630" At.gff|Searching for 2 words separated by a tab "\t"
-(the last commonad does not work on some Mac OS boxes, use piping instead and multiple greps)|
 
 ### sort 
 
