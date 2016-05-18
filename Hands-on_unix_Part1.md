@@ -305,6 +305,15 @@ Command | Description
 $ wc At.gff|The wc command shows the line, word and byte count for a file|
 $ wc `-l` At.gff|Shows number of lines only|
 
+### uniq – report or filter out repeated lines in a file
+
+Make sure the input of uniq is **sorted**!
+
+Command | Description
+---|------
+uniq *file*|eliminate duplicate lines|
+cut –f 1 At.gff \| sort \| uniq -c |uniq –c counts the number of occurences of **sorted** lines. Here we extract values of column 1, sort them and count them|
+uniq -d|shows lines that are repeated in the input (duplicates)|
 
 
 ## Pipes and redirecting input / output
@@ -378,15 +387,6 @@ Use the complete genome annotation file `TAIR10_GFF3_genes.gff` for Arabidopsis 
 
 ## More working on text files
 
-### uniq – report or filter out repeated lines in a file
-
-Make sure the input of uniq is **sorted**!
-
-Command | Description
----|------
-uniq *file*|eliminate duplicate lines|
-cut –f 1 At.gff \| sort \| uniq -c |uniq –c counts the number of occurences of **sorted** lines. Here we extract values of column 1, sort them and count them|
-uniq -d|shows lines that are repeated in the input (duplicates)|
 
 ### awk
 
