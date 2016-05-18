@@ -21,7 +21,8 @@ heidi.lischer@ieu.uzh.ch
 9.30 - 9.40 | **Welcome & Introduction** | SW&HTL
 9.40 - 12.30 | **Introduction to the command line** <br /> Working with files, working with text, pipes <br /> [Presentation](LinuxBash.pdf)  \| [Demo](demo_filesystem.md) \| [Hands-on 1](Hands-on_unix_Part1.md) \| [Hands-on 2](Hands-on_unix_Part2.md) | SW
  | |
-13.30 - 17.30 | **Bash scripting** <br /> [Presentation](BashScripting.pdf) \| [Hands-on](Exercises_BashScripting.pdf) | HTL
+13.30 - 14.30 | Working with text files | SW
+14.30 - 17.30 | **Bash scripting** <br /> [Presentation](BashScripting.pdf) \| [Hands-on](Exercises_BashScripting.pdf) | HTL
 
 
 [Etherpad](https://public.etherpad-mozilla.org/p/BIO609_2016)
@@ -60,6 +61,7 @@ Now you can start the VM by selecting it in the list and clicking on the Start b
 **Linux/Shell**  
 - Software Carpentry tutorial - [The Unix shell](http://swcarpentry.github.io/shell-novice)   
 - Data-Carpentry - [shell-genomics](http://github.com/datacarpentry/shell-genomics/tree/gh-pages/lessons) 
+- [Interactive course](http://www.learnshell.org/)  
 - [Cheatsheet](https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md)  
 - [SIB e-learning: UNIX fundamentals](http://edu.isb-sib.ch/pluginfile.php/2878/mod_resource/content/3/couselab-html/content.html)  
 - [Explain shell commands](http://explainshell.com/)   
