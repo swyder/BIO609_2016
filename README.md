@@ -28,7 +28,7 @@ heidi.lischer@ieu.uzh.ch
 [Etherpad](https://public.etherpad-mozilla.org/p/BIO609_2016)
 
 
-## Installation Instructions for the Virtual Machine
+## Installation Instructions for the Virtual Machine (VM)
 
 - Download the virtual machine manager VirtualBox, from [virtualbox.org](https://www.virtualbox.org/). Make sure you pick the right operation system for your laptop. 
 - Install VirtualBox on your machine
@@ -36,6 +36,15 @@ heidi.lischer@ieu.uzh.ch
 - Run VirtualBox and do `File | Import Appliance` from the menu. Choose the VM image you just downloaded (file with extension .OVA). This will trigger a menu where you can change the Appliance settings. We recommend giving the VM as much memory as you can given your local machine (about 2/3 of the total memory, but between 2-4 GB). Start the import process.
 
 Now you can start the VM by selecting it in the list and clicking on the Start button. Login with the VM password. 
+
+### Copy/paste doesn't work in the command window
+
+To copy, select text and click the title bar and go to Edit->Copy. You can use Edit->Paste to paste.  
+  
+  
+The usual shortcuts for copy/paste don't work in the virtual machine. For Macs use ctrl+shift+C for copying and ctrl+shift+v for pasting.  
+  
+You can also setup shared folders between the VM and the host system. Ask us how to do it.
 
 
 ## Recommended books (Practical Computing Skills)
